@@ -4,6 +4,7 @@ import crypto from 'crypto';
 import mongoose from 'mongoose';
 mongoose.Promise = require('bluebird');
 import {Schema} from 'mongoose';
+import OrderItem from '../order/orderitem.model';
 
 var UserSchema = new Schema({
   name: String,
@@ -16,6 +17,7 @@ var UserSchema = new Schema({
     type: String,
     default: 'user'
   },
+  order: [OrderItem.schema],
   password: {
     type: String,
     required: true
