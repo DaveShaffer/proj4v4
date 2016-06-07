@@ -50,6 +50,9 @@ exports.addItem = function(req, res) {
   Item.findById(itemId, function(err, item) {
     if (err) { return handleError(res, err); }
     if (!item) { return res.send(404); }
+    item.qty -= 1;
+    item.save(item.id);
+    console.log(item.name, item.qty);
     User.findById(userId, function(err, user) {
       if (err) { return handleError(res, err); }
       if (!user) { return res.send(404); }
@@ -66,7 +69,7 @@ exports.addItem = function(req, res) {
       }
       user.save(function() {
         user.populate('order.item', function(err, user) {
-          return res.json(201, user.order );
+          return res.status(201).json(user.order );
         });
       });
     });
@@ -96,7 +99,7 @@ exports.removeItem = function(req, res) {
     }
     user.save(function() {
       user.populate('order.item', function(err, user) {
-        return res.json(201, user.order );
+        return res.status(201).json(user.order );
       });
     });
   });
@@ -116,7 +119,7 @@ exports.removeAllItems = function(req, res) {
     user.order = [];
     user.save(function() {
       user.populate('order.item', function(err, user) {
-        return res.send(204, user.order);
+        return res.status(204).send(user.order);
       });
     });
   });

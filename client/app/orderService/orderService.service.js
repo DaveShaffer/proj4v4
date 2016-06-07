@@ -18,7 +18,13 @@ angular
 
     svc.removeItem = function(orderItem) {
       var userId = Auth.getCurrentUser()._id;
+      console.log(svc.order, svc.orderItem, svc.userId);
       return $http.delete('/api/users/' + userId + '/order/' + orderItem._id);
+      // var index = svc.order.indexOf(orderItem);
+      // svc.order[index].quantity -= 1;
+      // if (svc.order[index].quantity == 0) {
+      //   svc.order.splice(index, 1);
+      // }
     };
 
     svc.getCost = function(orderItem) {

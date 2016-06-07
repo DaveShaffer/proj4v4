@@ -27,14 +27,14 @@
                 <dd>{{ item.category }}</dd> -->
                 <dt>Price:</dt>
                 <dd>{{ item.price | currency }}</dd>
-                <!-- <dt>Rating:</dt>
-                <dd>{{ item.rating }} / 5</dd> -->
+                <dt>In Stock:</dt>
+                <dd>{{ item.qty }}</dd>
               </dl>
             </div>
           </article>
         </a>
         <div class="text-center">
-          <button class="btn btn-sm btn-success" ng-click="$ctrl.addItem(item)">Add to Order</button>
+          <button class="btn btn-sm btn-success" id="sold-out-button" ng-click="$ctrl.addItem(item)" ng-disabled="item.qty < 1" ng-class="{'btn-danger': item.qty < 3}">Add to Order</button>
         </div>
       </div>
       <div class="animate-inventory text-center" ng-hide="filteredItems.length">

@@ -65,7 +65,7 @@ User.find( {} ).remove()
       {
         name: 'Cheese Burger',
         price: 3.50,
-        qty: 50,
+        qty: 3,
         quantity: 1,
         serving: 1,
         delDate: 1465200076000,
