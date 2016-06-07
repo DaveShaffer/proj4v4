@@ -1,37 +1,38 @@
 'use strict';
 
-angular.module('4vSubShopApp')
+angular
+  .module('4vSubShopApp')
   .service('orderService', function ($http, Auth) {
 
-    var that = this;
+    var svc = this;
 
-    that.getOrder = function() {
+    svc.getOrder = function() {
       var userId = Auth.getCurrentUser()._id;
       return $http.get('/api/users/' + userId + '/order/');
     };
 
-    that.addItem = function(item) {
+    svc.addItem = function(item) {
       var userId = Auth.getCurrentUser()._id;
       return $http.post('/api/users/' + userId + '/order/' + item._id);
     };
 
-    that.removeItem = function(orderItem) {
+    svc.removeItem = function(orderItem) {
       var userId = Auth.getCurrentUser()._id;
       return $http.delete('/api/users/' + userId + '/order/' + orderItem._id);
     };
 
-    that.getCost = function(orderItem) {
+    svc.getCost = function(orderItem) {
       return orderItem.qty * orderItem.item.price;
     };
 
-    that.getTotal = function(order) {
+    svc.getTotal = function(order) {
       var total = _.reduce(order, function(sum, orderItem) {
-        return sum + that.getCost(orderItem);
+        return sum + svc.getCost(orderItem);
       }, 0);
       return total;
     };
 
-    that.clearOrder = function() {
+    svc.clearOrder = function() {
       var userId = Auth.getCurrentUser()._id;
       return $http.delete('/api/users/' + userId + '/order/');
     };

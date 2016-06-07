@@ -17,13 +17,13 @@ var UserSchema = new Schema({
     type: String,
     default: 'user'
   },
-  order: [OrderItem.schema],
   password: {
     type: String,
     required: true
   },
   provider: String,
-  salt: String
+  salt: String,
+  order: [OrderItem.schema]
 });
 
 /**

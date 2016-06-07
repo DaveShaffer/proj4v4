@@ -5,10 +5,10 @@ var controller = require('./order.controller');
 
 var router = express.Router();
 
-router.get   ('/:userid/cart/',        controller.get);
-router.post  ('/:userid/cart/:itemid', controller.addItem);
-router.delete('/:userid/cart/:itemid', controller.removeItem);
-router.delete('/:userid/cart/',        controller.removeAllItems);
+router.get   ('/:userid/order/',        controller.get);
+router.post  ('/:userid/order/:itemid', controller.addItem);
+router.delete('/:userid/order/:itemid', controller.removeItem);
+router.delete('/:userid/order/',        controller.removeAllItems);
 
 // router.get('/', controller.index);
 // router.get('/:id', controller.show);

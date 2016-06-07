@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('4vSubShopApp')
+angular
+  .module('4vSubShopApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('items', {

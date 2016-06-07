@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('4vSubShopApp')
+angular
+  .module('4vSubShopApp')
   .service('itemService', function($http) {
 
     var svc = this;

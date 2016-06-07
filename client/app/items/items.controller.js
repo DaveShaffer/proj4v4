@@ -102,7 +102,8 @@ class ItemsComponent {
   }
 }
 
-angular.module('4vSubShopApp')
+angular
+  .module('4vSubShopApp')
   .component('items', {
     templateUrl: 'app/items/items.html',
     controller: ItemsComponent

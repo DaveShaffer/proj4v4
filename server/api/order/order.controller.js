@@ -32,7 +32,7 @@ exports.get = function(req, res) {
   User.findById(userId)
   .populate('order.item')
   .exec(function(err, user) {
-    console.log('user: ' + user.name);
+    console.log('user: ' + (user ? user.name : ''));
     if (err) { return handleError(res, err); }
     if (!user) { return res.send(404); }
     console.log('returning order: ' + JSON.stringify(user.order));

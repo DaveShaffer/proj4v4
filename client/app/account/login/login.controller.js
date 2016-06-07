@@ -29,5 +29,6 @@ class LoginController {
   }
 }
 
-angular.module('4vSubShopApp')
+angular
+  .module('4vSubShopApp')
   .controller('LoginController', LoginController);
